@@ -1,0 +1,22 @@
+name: Welcome flow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print messsage
+        run: echo "Hello From Github Actions"
+
+      - name: Show current directory
+        run: pwd
+
+      - name: show files
+        run: ls -la
+
+      
