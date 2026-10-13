@@ -1,0 +1,31 @@
+name: Welcome flow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
+        
+
+      - name: Build docker images
+        run: |
+          docker build -t ${{secrets.DOCKERHUB_USERNAME}}/icici-fastapi:1.20 .
+      - name: push docker images
+        run: |
+          docker push ${{secrets.DOCKERHUB_USERNAME}}/icici-fastapi:1.20
+
+
+      
