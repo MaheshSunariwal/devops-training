@@ -5,6 +5,7 @@ app= FastAPI()
 @app.get("/home")
 def home():
     print("succesfully run")
+    print("hii")
     return {"message": "welcome Home"}
 
 @app.get("/login")
